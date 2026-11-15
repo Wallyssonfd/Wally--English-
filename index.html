@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wally English</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      margin: 0;
+      text-align: center;
+      color: #222;
+    }
+
+    header {
+      background: #2563eb;
+      color: white;
+      padding: 30px 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .container {
+      padding: 30px 20px;
+    }
+
+    .card {
+      background: white;
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    #lesson {
+      display: none;
+    }
+
+    .word {
+      font-size: 28px;
+      font-weight: bold;
+      color: #2563eb;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Wally English 🇺🇸</h1>
+    <div class="subtitle">Learn English every day!</div>
+  </header>
+
+  <div class="container">
+
+    <div class="card" id="home">
+      <h2>Welcome!</h2>
+      <p>Practice English with vocabulary and conversation.</p>
+
+      <button onclick="startLesson()">Start Lesson</button>
+    </div>
+
+    <div class="card" id="lesson">
+      <h2>Today's Word</h2>
+
+      <p class="word">Actually</p>
+
+      <p><strong>Meaning:</strong> Na verdade</p>
+
+      <p><strong>Example:</strong><br>
+      Actually, I like this idea.</p>
+
+      <button onclick="nextWord()">Next Word</button>
+    </div>
+
+  </div>
+
+  <script>
+    const words = [
+      {
+        word: "Actually",
+        meaning: "Na verdade",
+        example: "Actually, I like this idea."
+      },
+      {
+        word: "Although",
+        meaning: "Embora",
+        example: "Although I was tired, I went to work."
+      },
+      {
+        word: "Improve",
+        meaning: "Melhorar",
+        example: "I want to improve my English."
+      }
+    ];
+
+    let currentWord = 0;
+
+    function startLesson() {
+      document.getElementById("home").style.display = "none";
+      document.getElementById("lesson").style.display = "block";
+    }
+
+    function nextWord() {
+      currentWord++;
+
+      if (currentWord >= words.length) {
+        currentWord = 0;
+      }
+
+      document.querySelector(".word").innerText =
+        words[currentWord].word;
+
+      document.querySelector("#lesson p:nth-of-type(2)").innerHTML =
+        "<strong>Meaning:</strong> " + words[currentWord].meaning;
+
+      document.querySelector("#lesson p:nth-of-type(3)").innerHTML =
+        "<strong>Example:</strong><br>" + words[currentWord].example;
+    }
+  </script>
+
+</body>
+</html>
